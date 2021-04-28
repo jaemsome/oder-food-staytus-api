@@ -48,7 +48,7 @@ class ItemController extends Controller
         $item->categories()->attach( $data['categories'] );
 
 
-        return response(['item' => new ItemResource($item), 'categories' => $item->categories, 'message' => 'Created successfully.'], 201);
+        return response(['item' => new ItemResource($item), 'menu' => $item->menu, 'image' => $item->image, 'categories' => $item->categories, 'message' => 'Created successfully.'], 201);
     }
 
     /**
@@ -61,7 +61,7 @@ class ItemController extends Controller
     {
         $item = Item::findOrFail($id);
 
-        return response(['item' => new ItemResource($item), 'categories' => $item->categories, 'message' => 'Retrieved successfully.'], 200);
+        return response(['item' => new ItemResource($item), 'menu' => $item->menu, 'image' => $item->image, 'categories' => $item->categories, 'message' => 'Retrieved successfully.'], 200);
     }
 
     /**
@@ -77,7 +77,7 @@ class ItemController extends Controller
         $item->update( $request->all() );
         $item->categories()->sync( $request['categories'] );
 
-        return response(['item' => new ItemResource($item), 'categories' => $item->categories, 'message' => 'Updated successfully.'], 200);
+        return response(['item' => new ItemResource($item), 'menu' => $item->menu, 'image' => $item->image, 'categories' => $item->categories, 'message' => 'Updated successfully.'], 200);
     }
 
     /**

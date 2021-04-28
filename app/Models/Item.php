@@ -23,6 +23,11 @@ class Item extends Model
         return $this->belongsTo( Menu::class );
     }
 
+    public function image()
+    {
+        return $this->belongsTo( Image::class );
+    }
+
     public function categories()
     {
         return $this->belongsToMany( Category::class );
