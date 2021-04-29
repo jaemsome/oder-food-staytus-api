@@ -43,7 +43,7 @@ class ImageController extends Controller
 
         $image = Image::create($data);
 
-        return response(['image' => new ImageResource($image), 'message' => 'Created successfully.'], 201);
+        return response(['image' => new ImageResource($image), 'item' => $image->item, 'message' => 'Created successfully.'], 201);
     }
 
     /**
@@ -56,7 +56,7 @@ class ImageController extends Controller
     {
         $image = Image::findOrFail($id);
 
-        return response(['image' => new ImageResource($image), 'message' => 'Retrieved successfully.'], 200);
+        return response(['image' => new ImageResource($image), 'item' => $image->item, 'message' => 'Retrieved successfully.'], 200);
     }
 
     /**
@@ -71,7 +71,7 @@ class ImageController extends Controller
 
         $image->update( $request->all() );
 
-        return response(['image' => new ImageResource($image), 'message' => 'Updated successfully.'], 200);
+        return response(['image' => new ImageResource($image), 'item' => $image->item, 'message' => 'Updated successfully.'], 200);
     }
 
     /**

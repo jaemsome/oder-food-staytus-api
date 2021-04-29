@@ -42,7 +42,7 @@ class MenuController extends Controller
 
         $menu = Menu::create($data);
 
-        return response(['menu' => new MenuResource($menu), 'message' => 'Created successfully.'], 201);
+        return response(['menu' => new MenuResource($menu), 'items' => $menu->items, 'message' => 'Created successfully.'], 201);
     }
 
     /**
@@ -55,7 +55,7 @@ class MenuController extends Controller
     {
         $menu = Menu::findOrFail($id);
 
-        return response(['menu' => new MenuResource($menu), 'message' => 'Retrieved successfully.'], 200);
+        return response(['menu' => new MenuResource($menu), 'items' => $menu->items, 'message' => 'Retrieved successfully.'], 200);
     }
 
     /**
@@ -70,7 +70,7 @@ class MenuController extends Controller
 
         $menu->update( $request->all() );
 
-        return response(['menu' => new MenuResource($menu), 'message' => 'Updated successfully.'], 200);
+        return response(['menu' => new MenuResource($menu), 'items' => $menu->items, 'message' => 'Updated successfully.'], 200);
     }
 
     /**

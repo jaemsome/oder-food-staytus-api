@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         $category = Category::create($data);
 
-        return response(['category' => new CategoryResource($category), 'message' => 'Created successfully.'], 201);
+        return response(['category' => new CategoryResource($category), 'items' => $category->items, 'message' => 'Created successfully.'], 201);
     }
 
     /**
@@ -55,7 +55,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return response(['category' => new CategoryResource($category), 'message' => 'Retrieved successfully.'], 200);
+        return response(['category' => new CategoryResource($category), 'items' => $category->items, 'message' => 'Retrieved successfully.'], 200);
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoryController extends Controller
 
         $category->update( $request->all() );
 
-        return response(['category' => new CategoryResource($category), 'message' => 'Updated successfully.'], 200);
+        return response(['category' => new CategoryResource($category), 'items' => $category->items, 'message' => 'Updated successfully.'], 200);
     }
 
     /**

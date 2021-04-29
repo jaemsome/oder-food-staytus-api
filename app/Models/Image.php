@@ -17,4 +17,9 @@ class Image extends Model
     protected $fillable = [
         'name', 'description', 'filename'
     ];
+
+    public function item()
+    {
+        return $this->hasOne(Item::class);
+    }
 }
